@@ -1,0 +1,37 @@
+{
+  "name": "sql-to-mongodb-etl",
+  "version": "1.0.0",
+  "description": "50GB NCR CounterPoint SQL Server to MongoDB IMS Migration Engine and Control Dashboard",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "nodemon --watch src --ext ts --exec ts-node src/server.ts",
+    "dev:all": "concurrently \"npm run dev\" \"npm run client:dev\"",
+    "migrate": "ts-node src/orchestrator/phaseRunner.ts",
+    "reconcile": "ts-node src/orchestrator/reconciliation.ts",
+    "build": "tsc",
+    "client:install": "cd client && npm install",
+    "client:dev": "cd client && npm run dev",
+    "client:build": "cd client && npm run build"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.0.0",
+    "mssql": "^11.0.1",
+    "p-limit": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/mssql": "^9.0.5",
+    "@types/node": "^20.12.7",
+    "concurrently": "^10.0.6",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
